@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
-import TimeAgo from './TimeAgo';
 import ReactionButtons from './ReactionButtons';
+import PostAuthor from './PostAuthor';
+import TimeAgo from './TimeAgo';
 
 const PostsList = () => {
   const posts = useSelector(store => store.posts);
@@ -12,7 +13,7 @@ const PostsList = () => {
           <h1 className='text-xl'>{post.title}</h1>
           <p>{post.content}</p>
           <p>
-            - <span>Unknown author</span>, <TimeAgo timestamp={post.date} />
+            - <PostAuthor authorId={post.userId} />, <TimeAgo timestamp={post.date} />
           </p>
           <ReactionButtons reactions={post.reactions} />
         </article>
