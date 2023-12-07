@@ -66,10 +66,12 @@ const postsSlice = createSlice({
       const post = state.find(post => post.id === postId);
       const postIndex = state.findIndex(post => post.id === postId);
 
-      if (post) {
-        post.reactions[reactionType]++;
-        state.splice(postIndex, 1, post);
+      if (!post) {
+        return state;
       }
+
+      post.reactions[reactionType]++;
+      state.splice(postIndex, 1, post);
     },
   },
 });
